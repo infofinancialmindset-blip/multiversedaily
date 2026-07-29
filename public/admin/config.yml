@@ -1,0 +1,98 @@
+backend:
+  name: github
+  repo: TUO-UTENTE-GITHUB/marvel-news-blog # sostituisci con owner/nome-repo reale
+  branch: main
+  auth_endpoint: api/auth
+
+# Anteprima delle bozze: pubblica direttamente su main.
+# Passa a true se preferisci passare da Pull Request per ogni articolo.
+publish_mode: simple
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "news"
+    label: "News"
+    folder: "content/articles/news"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Estratto", name: "excerpt", widget: "text" }
+      - { label: "Autore", name: "author", widget: "string", default: "Redazione" }
+      - { label: "Data pubblicazione", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Data aggiornamento", name: "updatedAt", widget: "datetime", format: "YYYY-MM-DD", required: false }
+      - { label: "Immagine di copertina", name: "coverImage", widget: "image", required: false }
+      - { label: "In evidenza in home", name: "featured", widget: "boolean", default: false }
+      - { label: "Tag", name: "tags", widget: "list", default: [] }
+      - { label: "Contenuto", name: "body", widget: "markdown" }
+
+  - name: "teorie"
+    label: "Teorie & Approfondimenti"
+    folder: "content/articles/teorie"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Estratto", name: "excerpt", widget: "text" }
+      - { label: "Autore", name: "author", widget: "string", default: "Redazione" }
+      - { label: "Data pubblicazione", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Data aggiornamento", name: "updatedAt", widget: "datetime", format: "YYYY-MM-DD", required: false }
+      - { label: "Immagine di copertina", name: "coverImage", widget: "image", required: false }
+      - { label: "In evidenza in home", name: "featured", widget: "boolean", default: false }
+      - { label: "Tag", name: "tags", widget: "list", default: [] }
+      - { label: "Contenuto", name: "body", widget: "markdown" }
+
+  - name: "recensioni"
+    label: "Recensioni"
+    folder: "content/articles/recensioni"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Estratto", name: "excerpt", widget: "text" }
+      - { label: "Autore", name: "author", widget: "string", default: "Redazione" }
+      - { label: "Voto (1-10)", name: "rating", widget: "number", value_type: "float", min: 1, max: 10, required: false }
+      - { label: "Data pubblicazione", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Data aggiornamento", name: "updatedAt", widget: "datetime", format: "YYYY-MM-DD", required: false }
+      - { label: "Immagine di copertina", name: "coverImage", widget: "image", required: false }
+      - { label: "In evidenza in home", name: "featured", widget: "boolean", default: false }
+      - { label: "Tag", name: "tags", widget: "list", default: [] }
+      - label: "Dove guardarlo (link affiliati)"
+        name: "whereToWatch"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Piattaforma", name: "platform", widget: "string" }
+          - { label: "Link", name: "url", widget: "string" }
+          - { label: "Nota", name: "note", widget: "string", required: false }
+      - { label: "Contenuto", name: "body", widget: "markdown" }
+
+  - name: "guide"
+    label: "Guide"
+    folder: "content/guide"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Estratto", name: "excerpt", widget: "text" }
+      - { label: "Autore", name: "author", widget: "string", default: "Redazione" }
+      - { label: "Data prima pubblicazione", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Data ultimo aggiornamento", name: "updatedAt", widget: "datetime", format: "YYYY-MM-DD", hint: "Aggiorna questa data ogni volta che modifichi la guida" }
+      - { label: "Immagine di copertina", name: "coverImage", widget: "image", required: false }
+      - { label: "In evidenza in home", name: "featured", widget: "boolean", default: false }
+      - { label: "Tag", name: "tags", widget: "list", default: [] }
+      - label: "Dove guardarlo (link affiliati)"
+        name: "whereToWatch"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Piattaforma", name: "platform", widget: "string" }
+          - { label: "Link", name: "url", widget: "string" }
+          - { label: "Nota", name: "note", widget: "string", required: false }
+      - { label: "Contenuto", name: "body", widget: "markdown" }

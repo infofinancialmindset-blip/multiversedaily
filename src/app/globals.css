@@ -1,26 +1,86 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0b0f;
+  --background-elevated: #12141b;
+  --surface: #171a23;
+  --surface-hover: #1e222d;
+  --border: #262b38;
+  --foreground: #f2f3f7;
+  --muted: #9aa1b2;
+
+  --accent-primary: #e8283f;
+  --accent-primary-hover: #ff3d54;
+  --accent-news: #e8283f;
+  --accent-teorie: #7c5cff;
+  --accent-recensioni: #ffb020;
+  --accent-guide: #21c6a8;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-muted: var(--muted);
+
+  --color-accent-primary: var(--accent-primary);
+  --color-accent-primary-hover: var(--accent-primary-hover);
+  --color-accent-news: var(--accent-news);
+  --color-accent-teorie: var(--accent-teorie);
+  --color-accent-recensioni: var(--accent-recensioni);
+  --color-accent-guide: var(--accent-guide);
+
+  --font-display: var(--font-space-grotesk);
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: dark;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--accent-primary);
+  color: white;
+}
+
+.prose-marvel {
+  --tw-prose-body: var(--foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-links: var(--accent-recensioni);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-bullets: var(--muted);
+  --tw-prose-counters: var(--muted);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--foreground);
+  --tw-prose-quote-borders: var(--accent-primary);
+  --tw-prose-captions: var(--muted);
+  --tw-prose-code: var(--foreground);
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--border);
+}
+
+.prose-marvel a {
+  text-decoration-color: color-mix(in srgb, var(--accent-recensioni) 40%, transparent);
+  text-underline-offset: 3px;
+}
+
+.prose-marvel code {
+  background: var(--surface);
+  padding: 0.15em 0.4em;
+  border-radius: 0.35em;
+  font-size: 0.875em;
+}
+
+.prose-marvel code::before,
+.prose-marvel code::after {
+  content: "";
 }
