@@ -1,12 +1,19 @@
 ---
-title: "Leak: nuove foto dal set di Avengers: Doomsday mostrerebbero la seconda armatura di Doom"
-excerpt: "Alcune immagini non ufficiali circolate sui social mostrerebbero una variante dell'armatura mai vista nei materiali promozionali. Affidabilità: media."
-tags: ["Avengers: Doomsday", "Doctor Doom", "Fase 6"]
-universe: "mcu"
-format: "film"
-publishedAt: "2026-07-26"
-author: "Marco Ferretti"
+title: "Leak: nuove foto dal set di Avengers: Doomsday mostrerebbero la seconda
+  armatura di Doom"
+excerpt: "Alcune immagini non ufficiali circolate sui social mostrerebbero una
+  variante dell'armatura mai vista nei materiali promozionali. Affidabilità:
+  media."
+author: Marco Ferretti
+universe: mcu
+format: film
+publishedAt: 2026-07-26
+coverImage: /images/uploads/hocjgq3xeaaacs9.jpeg
 featured: true
+tags:
+  - "Avengers: Doomsday"
+  - Doctor Doom
+  - Fase 6
 ---
 
 Nelle ultime 48 ore sono circolate sui social alcune immagini, non confermate da Marvel Studios, che mostrerebbero una **seconda versione dell'armatura di Doctor Doom** utilizzata durante le riprese di *Avengers: Doomsday*.
