@@ -78,6 +78,21 @@ function listMarkdownFiles(dir: string): string[] {
   return fs.readdirSync(dir).filter((file) => file.endsWith(".md"));
 }
 
+/**
+ * Normalizza i campi che il resto del sito dà per scontati. Un articolo
+ * pubblicato senza tag è normale (il campo è facoltativo nel pannello), ma
+ * senza questa rete di sicurezza farebbe fallire l'intera build.
+ */
+function normalizeFrontmatter<T extends FrontmatterBase>(data: unknown): T {
+  const frontmatter = (data ?? {}) as T;
+  const { tags } = frontmatter;
+
+  return {
+    ...frontmatter,
+    tags: Array.isArray(tags) ? tags.filter(Boolean) : [],
+  };
+}
+
 function loadArticle(
   category: ArticleCategorySlug,
   filename: string,
@@ -86,10 +101,9 @@ function loadArticle(
   const fullPath = path.join(ARTICLES_DIR, category, filename);
   const raw = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(raw);
-  const frontmatter = data as ArticleFrontmatter;
 
   return {
-    ...frontmatter,
+    ...normalizeFrontmatter<ArticleFrontmatter>(data),
     kind: "article",
     slug,
     category,
@@ -104,10 +118,9 @@ function loadGuide(filename: string): Guide {
   const fullPath = path.join(GUIDES_DIR, filename);
   const raw = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(raw);
-  const frontmatter = data as GuideFrontmatter;
 
   return {
-    ...frontmatter,
+    ...normalizeFrontmatter<GuideFrontmatter>(data),
     kind: "guide",
     slug,
     category: "guide",

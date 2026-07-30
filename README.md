@@ -107,13 +107,32 @@ cambiato ogni volta che rivedi il contenuto.
 Il sito legge tutti i file al momento della build: basta fare commit e push
 (o pubblicare da Decap CMS) e Vercel ricostruisce automaticamente il sito.
 
-### Opzione B — dal pannello editoriale `/admin` (consigliata se non usi Git)
+### Opzione B — dal pannello `/admin` in locale (già funzionante)
 
-Il sito include [Decap CMS](https://decapcms.org), un'interfaccia web che ti
-permette di scrivere articoli da browser (editor visuale, upload immagini)
-senza toccare Git: il salvataggio crea automaticamente un commit nel repo.
+Il sito include [Decap CMS](https://decapcms.org): editor visuale con
+formattazione, upload immagini, menu a tendina per universo e formato, e
+anteprima live. In locale funziona **senza nessuna configurazione**.
 
-Per attivarlo dopo il primo deploy su Vercel:
+Servono due terminali:
+
+```bash
+npm run cms
+```
+
+```bash
+npm run dev
+```
+
+Poi apri [http://localhost:3000/admin](http://localhost:3000/admin). Non
+serve login: `npm run cms` avvia un proxy che salva direttamente nei file del
+progetto. Quando premi **Publish**, il file `.md` viene creato in `content/`.
+Ti resta solo da fare commit e push per pubblicarlo online.
+
+### Opzione C — dal pannello `/admin` online (senza toccare il computer)
+
+In produzione lo stesso pannello scrive su GitHub, così puoi pubblicare da
+qualsiasi browser (anche da telefono). Va attivato una volta sola, dopo il
+primo deploy:
 
 1. Su GitHub, vai in **Settings → Developer settings → OAuth Apps → New
    OAuth App** e crea una nuova app con:
@@ -124,14 +143,13 @@ Per attivarlo dopo il primo deploy su Vercel:
    aggiungi:
    - `GITHUB_OAUTH_CLIENT_ID`
    - `GITHUB_OAUTH_CLIENT_SECRET`
-4. Modifica `public/admin/config.yml`, campo `backend.repo`, inserendo il tuo
-   `utente-github/nome-repo`.
-5. Fai il deploy (o ridistribuisci) e visita `https://<il-tuo-dominio>/admin`.
-   Accedi con il tuo account GitHub (deve avere accesso al repo) e potrai
-   creare/modificare articoli e guide da un'interfaccia grafica.
+4. Ridistribuisci e visita `https://<il-tuo-dominio>/admin`, poi accedi con
+   GitHub. Ogni salvataggio diventa un commit e Vercel ricostruisce il sito.
 
-> Nota: senza configurare le variabili d'ambiente sopra, `/admin` resta
-> raggiungibile ma il login fallirà: fino ad allora usa l'Opzione A.
+> Il repository è già configurato in `public/admin/config.yml`
+> (`infofinancialmindset-blip/multiversedaily`). Finché non imposti le due
+> variabili d'ambiente, il login online non funziona: nel frattempo usa
+> l'Opzione B, che è completa.
 
 ## 4. Struttura del progetto
 

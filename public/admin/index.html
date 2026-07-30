@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pannello contenuti — Multiverse Daily</title>
     <meta name="robots" content="noindex" />
+    <style>
+      /* Decap costruisce il proprio layout assumendo un contenitore a tutta
+         altezza: senza questo, il form dell'articolo si tronca e i campi in
+         fondo (immagine, tag, contenuto) non vengono impaginati. */
+      html,
+      body,
+      #nc-root {
+        height: 100%;
+        margin: 0;
+      }
+    </style>
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>

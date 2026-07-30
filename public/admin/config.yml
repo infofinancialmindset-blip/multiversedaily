@@ -1,8 +1,14 @@
 backend:
   name: github
-  repo: TUO-UTENTE-GITHUB/marvel-news-blog # sostituisci con owner/nome-repo reale
+  repo: infofinancialmindset-blip/multiversedaily
   branch: main
   auth_endpoint: api/auth
+
+# Scrittura in locale: quando apri /admin da localhost, Decap parla con il
+# proxy avviato da `npm run cms` e salva direttamente nei file del progetto,
+# senza login GitHub. In produzione questa riga viene ignorata e si usa il
+# backend github qui sopra.
+local_backend: true
 
 # Anteprima delle bozze: pubblica direttamente su main.
 # Passa a true se preferisci passare da Pull Request per ogni articolo.
