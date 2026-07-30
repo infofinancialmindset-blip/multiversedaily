@@ -2,6 +2,10 @@ backend:
   name: github
   repo: infofinancialmindset-blip/multiversedaily
   branch: main
+  # Senza base_url, Decap userebbe il suo default (https://api.netlify.com) e
+  # il login finirebbe su un "Not Found". Qui puntiamo al nostro dominio, dove
+  # vivono le route /api/auth e /api/callback che gestiscono l'OAuth GitHub.
+  base_url: https://www.multiversedaily.it
   auth_endpoint: api/auth
 
 # Scrittura in locale: quando apri /admin da localhost, Decap parla con il
