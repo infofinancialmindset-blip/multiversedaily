@@ -2,6 +2,8 @@
 title: "Il ritorno di Robert Downey Jr.: come Avengers: Doomsday può spiegare Doctor Doom senza toccare Iron Man"
 excerpt: "L'idea di un attore che interpreta due personaggi diversi nello stesso universo narrativo non è nuova nei fumetti: ecco come l'MCU potrebbe gestirla senza contraddizioni."
 tags: ["Doctor Doom", "Robert Downey Jr.", "Avengers: Doomsday"]
+universe: "mcu"
+format: "film"
 publishedAt: "2026-07-22"
 author: "Davide Conti"
 ---

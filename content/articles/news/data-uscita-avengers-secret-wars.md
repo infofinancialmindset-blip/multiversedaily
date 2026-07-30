@@ -2,6 +2,8 @@
 title: "Marvel Studios conferma la data d'uscita di Avengers: Secret Wars"
 excerpt: "Durante l'investor day di Disney è stata confermata la finestra di lancio del capitolo conclusivo del Multiverse Saga."
 tags: ["Secret Wars", "Multiverse Saga", "Fase 6"]
+universe: "mcu"
+format: "film"
 publishedAt: "2026-05-20"
 author: "Marco Ferretti"
 featured: true

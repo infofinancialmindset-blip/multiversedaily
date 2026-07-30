@@ -2,6 +2,8 @@
 title: "Fantastic Four e il Multiverso: quale sarà il ruolo di Reed Richards in Secret Wars"
 excerpt: "Il personaggio più intelligente dell'MCU potrebbe avere un ruolo chiave nella risoluzione della crisi multiversale, più da regista degli eventi che da semplice combattente."
 tags: ["Fantastic Four", "Secret Wars", "Multiverse Saga"]
+universe: "mcu"
+format: "film"
 publishedAt: "2026-06-25"
 author: "Elena Marchetti"
 ---

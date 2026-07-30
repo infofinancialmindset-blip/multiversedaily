@@ -3,7 +3,14 @@ import path from "node:path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
 import { markdownToHtml } from "./markdown";
-import type { CategorySlug } from "./site";
+import {
+  ARTICLE_CATEGORIES,
+  sections,
+  type ArticleCategorySlug,
+  type ContentFormat,
+  type SectionSlug,
+  type Universe,
+} from "./site";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 const ARTICLES_DIR = path.join(CONTENT_DIR, "articles");
@@ -24,6 +31,10 @@ type FrontmatterBase = {
   author: string;
   coverImage?: string;
   featured?: boolean;
+  /** Universo narrativo: alimenta le sezioni /mcu e /dc-universe. */
+  universe?: Universe;
+  /** Formato: alimenta le sezioni /film e /serie-tv. */
+  format?: ContentFormat;
   whereToWatch?: WhereToWatchEntry[];
 };
 
@@ -36,7 +47,7 @@ type GuideFrontmatter = FrontmatterBase;
 export type Article = ArticleFrontmatter & {
   kind: "article";
   slug: string;
-  category: Exclude<CategorySlug, "guide">;
+  category: ArticleCategorySlug;
   href: string;
   readingTimeText: string;
   content: string;
@@ -53,12 +64,6 @@ export type Guide = GuideFrontmatter & {
 
 export type ContentItem = Article | Guide;
 
-const ARTICLE_CATEGORIES: Exclude<CategorySlug, "guide">[] = [
-  "news",
-  "teorie",
-  "recensioni",
-];
-
 function readingTimeText(content: string): string {
   const minutes = Math.max(1, Math.ceil(readingTime(content).minutes));
   return `${minutes} min di lettura`;
@@ -74,7 +79,7 @@ function listMarkdownFiles(dir: string): string[] {
 }
 
 function loadArticle(
-  category: Exclude<CategorySlug, "guide">,
+  category: ArticleCategorySlug,
   filename: string,
 ): Article {
   const slug = slugFromFilename(filename);
@@ -118,9 +123,7 @@ function sortByDateDesc<T extends { publishedAt: string }>(items: T[]): T[] {
   );
 }
 
-export function getArticlesByCategory(
-  category: Exclude<CategorySlug, "guide">,
-): Article[] {
+export function getArticlesByCategory(category: ArticleCategorySlug): Article[] {
   const dir = path.join(ARTICLES_DIR, category);
   const files = listMarkdownFiles(dir);
   return sortByDateDesc(files.map((file) => loadArticle(category, file)));
@@ -134,7 +137,7 @@ export function getAllArticles(): Article[] {
 }
 
 export function getArticleBySlug(
-  category: Exclude<CategorySlug, "guide">,
+  category: ArticleCategorySlug,
   slug: string,
 ): Article | null {
   const filename = `${slug}.md`;
@@ -157,6 +160,20 @@ export function getGuideBySlug(slug: string): Guide | null {
 
 export function getAllContent(): ContentItem[] {
   return sortByDateDesc([...getAllArticles(), ...getAllGuides()]);
+}
+
+/**
+ * Contenuti di una sezione trasversale (MCU, DC Universe, Film, Serie TV):
+ * pesca da tutte le categorie in base a `universe`/`format` del frontmatter.
+ */
+export function getContentBySection(section: SectionSlug): ContentItem[] {
+  const { filter } = sections[section];
+
+  return getAllContent().filter((item) => {
+    if ("universe" in filter) return item.universe === filter.universe;
+    if ("format" in filter) return item.format === filter.format;
+    return false;
+  });
 }
 
 export function getFeaturedArticles(limit = 4): Article[] {

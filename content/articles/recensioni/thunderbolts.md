@@ -2,6 +2,8 @@
 title: "Recensione Thunderbolts*: gli antieroi Marvel funzionano meglio degli Avengers?"
 excerpt: "Un gruppo di personaggi imperfetti e moralmente ambigui regala all'MCU una delle formazioni corali più interessanti degli ultimi anni."
 tags: ["Thunderbolts", "Recensioni MCU"]
+universe: "mcu"
+format: "film"
 publishedAt: "2026-01-28"
 author: "Marco Ferretti"
 rating: 7.8

@@ -2,6 +2,8 @@
 title: "X-Men '97 stagione 2: confermato il ritorno di tutto il cast di doppiatori originali"
 excerpt: "Marvel Animation ha confermato che la seconda stagione manterrà l'intero cast vocale della prima, con qualche new entry a sorpresa."
 tags: ["X-Men '97", "Marvel Animation"]
+universe: "mcu"
+format: "serie"
 publishedAt: "2026-04-11"
 author: "Giulia Santoro"
 ---

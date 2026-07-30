@@ -2,6 +2,8 @@
 title: "Perché Doctor Doom potrebbe essere il vero villain di tutto il Multiverse Saga: la teoria che unisce i punti"
 excerpt: "Ripercorriamo gli indizi disseminati tra Loki, Fantastic Four e le prime immagini di Avengers: Doomsday che suggeriscono un piano molto più ampio di quanto sembri."
 tags: ["Doctor Doom", "Multiverse Saga", "Kang", "Fantastic Four"]
+universe: "mcu"
+format: "film"
 publishedAt: "2026-07-18"
 author: "Davide Conti"
 featured: true

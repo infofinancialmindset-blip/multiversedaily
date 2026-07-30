@@ -1,13 +1,5 @@
 import Link from "next/link";
-import type { CategorySlug } from "@/lib/site";
-import { categories } from "@/lib/site";
-
-const ACCENT_VAR: Record<CategorySlug, string> = {
-  news: "var(--accent-news)",
-  teorie: "var(--accent-teorie)",
-  recensioni: "var(--accent-recensioni)",
-  guide: "var(--accent-guide)",
-};
+import { categories, type CategorySlug } from "@/lib/site";
 
 export default function CategoryBadge({
   category,
@@ -19,8 +11,7 @@ export default function CategoryBadge({
   /** Set to false when already nested inside another link/button. */
   asLink?: boolean;
 }) {
-  const info = categories[category];
-  const accent = ACCENT_VAR[category];
+  const { label, accent } = categories[category];
 
   const className = `inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-semibold uppercase tracking-wide transition-colors hover:brightness-125 ${
     size === "sm" ? "text-[11px]" : "text-xs"
@@ -38,7 +29,7 @@ export default function CategoryBadge({
     return (
       <span className={className} style={style}>
         {dot}
-        {info.label}
+        {label}
       </span>
     );
   }
@@ -46,7 +37,7 @@ export default function CategoryBadge({
   return (
     <Link href={`/${category}`} className={className} style={style}>
       {dot}
-      {info.label}
+      {label}
     </Link>
   );
 }

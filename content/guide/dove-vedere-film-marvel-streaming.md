@@ -2,6 +2,8 @@
 title: "Dove guardare in streaming tutti i film e le serie Marvel: guida aggiornata"
 excerpt: "Le piattaforme streaming dove trovare oggi film e serie del Marvel Cinematic Universe, incluse le uscite più recenti."
 tags: ["Guide MCU", "Streaming"]
+universe: "mcu"
+format: "altro"
 publishedAt: "2024-05-02"
 updatedAt: "2026-07-25"
 author: "Redazione"

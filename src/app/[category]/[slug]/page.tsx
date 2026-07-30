@@ -2,7 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Clock, Calendar } from "lucide-react";
-import { categories, type CategorySlug } from "@/lib/site";
+import { ARTICLE_CATEGORIES, categories, isArticleCategory } from "@/lib/site";
 import {
   getArticleBySlug,
   getArticlesByCategory,
@@ -12,6 +12,7 @@ import {
 import { formatDate } from "@/lib/format";
 import { articleJsonLd } from "@/lib/schema";
 import CategoryBadge from "@/components/ui/CategoryBadge";
+import UniverseBadge from "@/components/ui/UniverseBadge";
 import RatingBadge from "@/components/ui/RatingBadge";
 import CoverPlaceholder from "@/components/ui/CoverPlaceholder";
 import TagList from "@/components/ui/TagList";
@@ -23,20 +24,8 @@ import WhereToWatchBox from "@/components/WhereToWatchBox";
 import JsonLd from "@/components/JsonLd";
 import AdSlot from "@/components/ads/AdSlot";
 
-const LISTED_CATEGORIES: Exclude<CategorySlug, "guide">[] = [
-  "news",
-  "teorie",
-  "recensioni",
-];
-
-function isArticleCategory(
-  value: string,
-): value is Exclude<CategorySlug, "guide"> {
-  return (LISTED_CATEGORIES as string[]).includes(value);
-}
-
 export function generateStaticParams() {
-  return LISTED_CATEGORIES.flatMap((category) =>
+  return ARTICLE_CATEGORIES.flatMap((category) =>
     getArticlesByCategory(category).map((article) => ({
       category,
       slug: article.slug,
@@ -105,6 +94,7 @@ export default async function ArticlePage({
       />
 
       <div className="flex flex-wrap items-center gap-3">
+        <UniverseBadge universe={article.universe} size="md" />
         <CategoryBadge category={category} size="md" />
         {category === "recensioni" && article.rating && (
           <RatingBadge rating={article.rating} />
@@ -141,6 +131,7 @@ export default async function ArticlePage({
         ) : (
           <CoverPlaceholder
             category={article.category}
+            universe={article.universe}
             title={article.title}
             className="absolute inset-0"
           />

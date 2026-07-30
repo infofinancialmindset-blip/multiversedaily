@@ -2,6 +2,8 @@
 title: "Le fasi del Marvel Cinematic Universe spiegate: dalla Fase 1 al Multiverse Saga"
 excerpt: "Cosa distingue ogni fase dell'MCU, quali film e serie ne fanno parte e come si collegano tra loro."
 tags: ["Guide MCU", "Fasi MCU", "Multiverse Saga"]
+universe: "mcu"
+format: "altro"
 publishedAt: "2024-08-19"
 updatedAt: "2026-07-10"
 author: "Redazione"

@@ -10,6 +10,7 @@ import {
 import ArticleCard from "@/components/ArticleCard";
 import GuideCard from "@/components/GuideCard";
 import CategoryBadge from "@/components/ui/CategoryBadge";
+import UniverseBadge from "@/components/ui/UniverseBadge";
 import CoverPlaceholder from "@/components/ui/CoverPlaceholder";
 import AdSlot from "@/components/ads/AdSlot";
 
@@ -40,13 +41,25 @@ export default function HomePage() {
             ) : (
               <CoverPlaceholder
                 category={hero.category}
+                universe={hero.universe}
                 title={hero.title}
                 className="absolute inset-0"
               />
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
             <div className="relative p-6">
-              <CategoryBadge category={hero.category} size="md" asLink={false} />
+              <div className="flex flex-wrap items-center gap-2">
+                <UniverseBadge
+                  universe={hero.universe}
+                  size="md"
+                  asLink={false}
+                />
+                <CategoryBadge
+                  category={hero.category}
+                  size="md"
+                  asLink={false}
+                />
+              </div>
               <h1 className="mt-3 max-w-xl font-display text-2xl font-bold leading-tight sm:text-3xl">
                 {hero.title}
               </h1>
@@ -73,13 +86,17 @@ export default function HomePage() {
                   ) : (
                     <CoverPlaceholder
                       category={article.category}
+                      universe={article.universe}
                       title={article.title}
                       className="absolute inset-0"
                     />
                   )}
                 </div>
                 <div className="min-w-0">
-                  <CategoryBadge category={article.category} asLink={false} />
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <UniverseBadge universe={article.universe} asLink={false} />
+                    <CategoryBadge category={article.category} asLink={false} />
+                  </div>
                   <p className="mt-1.5 line-clamp-2 text-sm font-semibold leading-snug group-hover:text-accent-primary-hover">
                     {article.title}
                   </p>

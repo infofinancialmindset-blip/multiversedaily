@@ -1,23 +1,30 @@
 import { Clapperboard } from "lucide-react";
-import type { CategorySlug } from "@/lib/site";
+import {
+  categories,
+  universes,
+  type CategorySlug,
+  type Universe,
+} from "@/lib/site";
 
-const ACCENT_VAR: Record<CategorySlug, string> = {
-  news: "var(--accent-news)",
-  teorie: "var(--accent-teorie)",
-  recensioni: "var(--accent-recensioni)",
-  guide: "var(--accent-guide)",
-};
-
+/**
+ * Copertina segnaposto usata quando un contenuto non ha `coverImage`.
+ * La tinta segue l'universo (rosso Marvel / blu DC) così la provenienza è
+ * leggibile a colpo d'occhio; senza universo ricade sul colore di categoria.
+ */
 export default function CoverPlaceholder({
   category,
+  universe,
   title,
   className = "",
 }: {
   category: CategorySlug;
+  universe?: Universe;
   title: string;
   className?: string;
 }) {
-  const accent = ACCENT_VAR[category];
+  const accent = universe
+    ? universes[universe].accent
+    : categories[category].accent;
 
   return (
     <div

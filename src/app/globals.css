@@ -12,10 +12,21 @@
 
   --accent-primary: #e8283f;
   --accent-primary-hover: #ff3d54;
-  --accent-news: #e8283f;
-  --accent-teorie: #7c5cff;
-  --accent-recensioni: #ffb020;
+
+  /* Universi: il colore identifica a colpo d'occhio Marvel vs DC. */
+  --accent-mcu: #e8283f;
+  --accent-dc: #2f6fff;
+  --accent-altro: #9aa1b2;
+
+  /* Categorie: il colore identifica il tipo di articolo. */
+  --accent-news: #22c55e;
+  --accent-leak: #f5c518;
+  --accent-recensioni: #a855f7;
+  --accent-teorie: #f472b6;
   --accent-guide: #21c6a8;
+
+  /* Colore dei link nel corpo degli articoli, indipendente dalle categorie. */
+  --accent-link: #ffb020;
 }
 
 @theme inline {
@@ -29,10 +40,14 @@
 
   --color-accent-primary: var(--accent-primary);
   --color-accent-primary-hover: var(--accent-primary-hover);
+  --color-accent-mcu: var(--accent-mcu);
+  --color-accent-dc: var(--accent-dc);
   --color-accent-news: var(--accent-news);
+  --color-accent-leak: var(--accent-leak);
   --color-accent-teorie: var(--accent-teorie);
   --color-accent-recensioni: var(--accent-recensioni);
   --color-accent-guide: var(--accent-guide);
+  --color-accent-link: var(--accent-link);
 
   --font-display: var(--font-space-grotesk);
   --font-sans: var(--font-inter);
@@ -55,7 +70,7 @@ body {
 .prose-marvel {
   --tw-prose-body: var(--foreground);
   --tw-prose-headings: var(--foreground);
-  --tw-prose-links: var(--accent-recensioni);
+  --tw-prose-links: var(--accent-link);
   --tw-prose-bold: var(--foreground);
   --tw-prose-bullets: var(--muted);
   --tw-prose-counters: var(--muted);
@@ -69,7 +84,7 @@ body {
 }
 
 .prose-marvel a {
-  text-decoration-color: color-mix(in srgb, var(--accent-recensioni) 40%, transparent);
+  text-decoration-color: color-mix(in srgb, var(--accent-link) 40%, transparent);
   text-underline-offset: 3px;
 }
 

@@ -2,6 +2,8 @@
 title: "Recensione Captain America: Brave New World: un nuovo Cap all'altezza dello scudo?"
 excerpt: "Il primo capitolo da protagonista di Sam Wilson come Captain America convince a metà, tra un buon protagonista e una trama politica poco incisiva."
 tags: ["Captain America", "Recensioni MCU"]
+universe: "mcu"
+format: "film"
 publishedAt: "2025-09-18"
 author: "Marco Ferretti"
 rating: 6.5

@@ -2,6 +2,8 @@
 title: "Ordine cronologico dei film e delle serie TV Marvel (MCU): la guida completa aggiornata"
 excerpt: "L'ordine in cui guardare tutti i film e le serie del Marvel Cinematic Universe seguendo la timeline interna, fase per fase."
 tags: ["Guide MCU", "Fasi MCU", "Multiverse Saga"]
+universe: "mcu"
+format: "altro"
 publishedAt: "2024-03-10"
 updatedAt: "2026-07-20"
 author: "Redazione"

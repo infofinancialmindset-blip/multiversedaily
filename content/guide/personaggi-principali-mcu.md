@@ -2,6 +2,8 @@
 title: "Tutti i personaggi principali dell'MCU: chi è chi nel Multiverse Saga"
 excerpt: "Una guida di riferimento ai personaggi centrali dell'attuale fase del Marvel Cinematic Universe, dai veterani alle new entry."
 tags: ["Guide MCU", "Personaggi MCU", "Multiverse Saga"]
+universe: "mcu"
+format: "altro"
 publishedAt: "2025-01-15"
 updatedAt: "2026-07-05"
 author: "Redazione"

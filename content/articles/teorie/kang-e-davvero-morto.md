@@ -2,6 +2,8 @@
 title: "Kang è davvero fuori gioco? Gli indizi in Loki che potrebbero riportarlo in scena"
 excerpt: "Nonostante il focus sia passato a Doctor Doom, alcuni dettagli disseminati nel finale di Loki lasciano una porta socchiusa per il ritorno del Conquistatore."
 tags: ["Kang", "Loki", "Multiverse Saga"]
+universe: "mcu"
+format: "serie"
 publishedAt: "2026-03-09"
 author: "Elena Marchetti"
 ---

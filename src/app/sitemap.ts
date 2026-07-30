@@ -1,17 +1,33 @@
 import type { MetadataRoute } from "next";
 import { getAllArticles, getAllGuides, getAllTags, tagToSlug } from "@/lib/content";
-import { siteConfig } from "@/lib/site";
+import { ARTICLE_CATEGORIES, sections, siteConfig } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: siteConfig.url, changeFrequency: "daily", priority: 1 },
-    { url: `${siteConfig.url}/news`, changeFrequency: "hourly", priority: 0.9 },
-    { url: `${siteConfig.url}/teorie`, changeFrequency: "daily", priority: 0.7 },
-    { url: `${siteConfig.url}/recensioni`, changeFrequency: "daily", priority: 0.7 },
     { url: `${siteConfig.url}/guide`, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${siteConfig.url}/teorie`, changeFrequency: "daily", priority: 0.7 },
     { url: `${siteConfig.url}/chi-siamo`, changeFrequency: "yearly", priority: 0.3 },
     { url: `${siteConfig.url}/contatti`, changeFrequency: "yearly", priority: 0.3 },
   ];
+
+  // Sezioni trasversali (MCU, Film, Serie TV, DC Universe): sono le landing
+  // page principali per la ricerca, quindi priorità alta.
+  const sectionRoutes: MetadataRoute.Sitemap = Object.keys(sections).map(
+    (slug) => ({
+      url: `${siteConfig.url}/${slug}`,
+      changeFrequency: "daily",
+      priority: 0.9,
+    }),
+  );
+
+  const categoryRoutes: MetadataRoute.Sitemap = ARTICLE_CATEGORIES.map(
+    (category) => ({
+      url: `${siteConfig.url}/${category}`,
+      changeFrequency: category === "news" ? "hourly" : "daily",
+      priority: 0.8,
+    }),
+  );
 
   const articleRoutes: MetadataRoute.Sitemap = getAllArticles().map((article) => ({
     url: `${siteConfig.url}${article.href}`,
@@ -33,5 +49,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.4,
   }));
 
-  return [...staticRoutes, ...articleRoutes, ...guideRoutes, ...tagRoutes];
+  return [
+    ...staticRoutes,
+    ...sectionRoutes,
+    ...categoryRoutes,
+    ...articleRoutes,
+    ...guideRoutes,
+    ...tagRoutes,
+  ];
 }

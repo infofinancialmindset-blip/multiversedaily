@@ -1,8 +1,9 @@
 # Multiverse Daily
 
-Magazine indipendente su film e serie TV Marvel (MCU): news, teorie,
-recensioni e guide evergreen. Costruito con Next.js (App Router, SSG),
-contenuti in Markdown versionati su Git, editing no-code tramite Decap CMS.
+Magazine indipendente su cinecomics — Marvel (MCU), DC Universe e non solo:
+news, leak, teorie, recensioni e guide evergreen. Costruito con Next.js
+(App Router, SSG), contenuti in Markdown versionati su Git, editing no-code
+tramite Decap CMS.
 
 ## Stack
 
@@ -33,19 +34,42 @@ npm run build
 npm run start
 ```
 
-## 2. Come aggiungere un nuovo articolo o guida
+## 2. Come è organizzato il sito (importante)
+
+Il sito ha due tipi di pagine di elenco, che funzionano diversamente:
+
+**Categorie** — sono le cartelle dove archivi l'articolo e determinano il suo
+URL. Ogni articolo ne ha **una sola**.
+
+| Categoria | Cartella | URL |
+|---|---|---|
+| News | `content/articles/news/` | `/news` |
+| Leak & Rumor | `content/articles/leak/` | `/leak` |
+| Teorie & Approfondimenti | `content/articles/teorie/` | `/teorie` |
+| Recensioni | `content/articles/recensioni/` | `/recensioni` |
+| Guide (evergreen) | `content/guide/` | `/guide` |
+
+**Sezioni** — non sono cartelle: raccolgono automaticamente contenuti da
+*tutte* le categorie, in base a due campi del frontmatter. Uno stesso
+articolo può quindi comparire in più sezioni contemporaneamente.
+
+| Sezione | URL | Si popola con |
+|---|---|---|
+| MCU | `/mcu` | `universe: "mcu"` |
+| DC Universe | `/dc-universe` | `universe: "dc"` |
+| Film | `/film` | `format: "film"` |
+| Serie TV | `/serie-tv` | `format: "serie"` |
+
+Esempio: la recensione di un film Marvel con `universe: "mcu"` e
+`format: "film"` appare sotto **Recensioni**, **MCU** e **Film** — l'articolo
+lo scrivi una volta sola.
+
+## 3. Come aggiungere un nuovo articolo o guida
 
 ### Opzione A — modificando i file Markdown (nessun setup richiesto)
 
 Ogni contenuto è un file `.md` con un blocco di frontmatter (i metadati) in
 cima e il testo dell'articolo sotto, in Markdown.
-
-| Categoria | Cartella |
-|---|---|
-| News | `content/articles/news/` |
-| Teorie & Approfondimenti | `content/articles/teorie/` |
-| Recensioni | `content/articles/recensioni/` |
-| Guide (evergreen) | `content/guide/` |
 
 Per creare un nuovo articolo, copia un file esistente nella cartella giusta,
 rinominalo (il nome del file diventa l'URL, es. `il-mio-articolo.md` →
@@ -56,6 +80,8 @@ rinominalo (il nome del file diventa l'URL, es. `il-mio-articolo.md` →
 title: "Titolo dell'articolo"
 excerpt: "Un riassunto di una frase, usato nelle card e nei meta tag SEO."
 tags: ["Tag Uno", "Tag Due"]
+universe: "mcu"         # mcu | dc | altro  → sezioni MCU / DC Universe
+format: "film"          # film | serie | altro → sezioni Film / Serie TV
 publishedAt: "2026-07-29"
 author: "Il tuo nome"
 featured: false        # true per comparire in home
@@ -70,6 +96,9 @@ whereToWatch:           # opzionale: box "Dove guardarlo" con link affiliati
 Il testo dell'articolo in Markdown, con **grassetto**, [link](/guide/...),
 elenchi, titoli `##`, ecc.
 ```
+
+Se ometti `universe` o `format`, l'articolo resta pubblicato e visibile nella
+sua categoria, ma non comparirà nelle sezioni corrispondenti.
 
 Per le **guide** aggiungi anche `updatedAt` (data di ultimo aggiornamento):
 è il campo che viene mostrato in evidenza come "Aggiornata il..." e va
@@ -104,21 +133,23 @@ Per attivarlo dopo il primo deploy su Vercel:
 > Nota: senza configurare le variabili d'ambiente sopra, `/admin` resta
 > raggiungibile ma il login fallirà: fino ad allora usa l'Opzione A.
 
-## 3. Struttura del progetto
+## 4. Struttura del progetto
 
 ```
 content/
-  articles/{news,teorie,recensioni}/*.md   articoli
-  guide/*.md                                guide evergreen
+  articles/{news,leak,teorie,recensioni}/*.md   articoli
+  guide/*.md                                     guide evergreen
 src/
-  app/            pagine (home, categorie, articolo, guida, tag, sitemap, robots)
+  app/            pagine (home, sezioni, categorie, articolo, guida, tag,
+                  sitemap, robots)
   components/     componenti riutilizzabili (card, box "dove guardarlo", ecc.)
   lib/            lettura contenuti, formattazione, dati strutturati SEO
+                  site.ts = navbar, categorie e sezioni (modifica qui il menu)
 public/
   admin/          pannello Decap CMS
 ```
 
-## 4. Monetizzazione (già predisposta, non attiva)
+## 5. Monetizzazione (già predisposta, non attiva)
 
 - **Pubblicità**: i punti di inserimento annunci (dopo il primo paragrafo,
   a metà articolo, fondo pagina, feed home) sono già presenti nel markup
@@ -132,7 +163,7 @@ public/
   collega un provider (Mailchimp, Beehiiv, ConvertKit...) sostituendo la
   funzione `handleSubmit`.
 
-## 5. Deploy
+## 6. Deploy
 
 Consigliato: **Vercel**, per l'integrazione nativa con Next.js (build
 automatiche, immagini ottimizzate, deploy preview per ogni modifica).

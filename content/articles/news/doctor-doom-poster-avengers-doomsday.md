@@ -2,6 +2,8 @@
 title: "Avengers: Doomsday, svelato il primo character poster di Robert Downey Jr. nei panni di Doctor Doom"
 excerpt: "Marvel Studios ha pubblicato il primo poster ufficiale dedicato al nuovo villain del Multiverse Saga, confermando il look definitivo dell'armatura."
 tags: ["Avengers: Doomsday", "Doctor Doom", "Robert Downey Jr.", "Fase 6"]
+universe: "mcu"
+format: "film"
 publishedAt: "2026-07-14"
 author: "Marco Ferretti"
 featured: true

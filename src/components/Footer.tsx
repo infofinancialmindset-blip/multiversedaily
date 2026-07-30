@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { navLinks, siteConfig } from "@/lib/site";
+import {
+  footerExtraLinks,
+  navLinks,
+  secondaryNavLinks,
+  siteConfig,
+} from "@/lib/site";
 import NewsletterForm from "@/components/NewsletterForm";
 
 export default function Footer() {
@@ -15,18 +20,15 @@ export default function Footer() {
           <div>
             <p className="text-sm font-semibold text-foreground">Sezioni</p>
             <ul className="mt-3 space-y-2 text-sm text-muted">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="hover:text-foreground">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link href="/contatti" className="hover:text-foreground">
-                  Contatti
-                </Link>
-              </li>
+              {[...navLinks, ...footerExtraLinks, ...secondaryNavLinks].map(
+                (link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="hover:text-foreground">
+                      {link.label}
+                    </Link>
+                  </li>
+                ),
+              )}
             </ul>
           </div>
 
@@ -38,9 +40,9 @@ export default function Footer() {
             © {new Date().getFullYear()} {siteConfig.name}. Tutti i diritti riservati.
           </p>
           <p>
-            Marvel, MCU e i relativi loghi sono marchi registrati di Marvel
-            Studios. Questo sito è un progetto editoriale indipendente e non è
-            affiliato a Marvel o Disney.
+            Marvel, MCU, DC e i relativi loghi sono marchi registrati dei
+            rispettivi proprietari. Questo sito è un progetto editoriale
+            indipendente e non è affiliato a Marvel, DC, Disney o Warner Bros.
           </p>
         </div>
       </div>

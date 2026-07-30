@@ -2,6 +2,8 @@
 title: "Spider-Man: Brand New Day, iniziano le riprese a Londra: le prime foto dal set"
 excerpt: "Tom Holland è stato avvistato in costume nel cuore di Londra: la produzione del nuovo capitolo di Spider-Man è ufficialmente partita."
 tags: ["Spider-Man", "Tom Holland", "Fase 6"]
+universe: "mcu"
+format: "film"
 publishedAt: "2026-06-02"
 author: "Giulia Santoro"
 ---

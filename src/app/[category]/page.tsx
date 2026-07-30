@@ -1,25 +1,13 @@
 import { Fragment } from "react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { categories, type CategorySlug } from "@/lib/site";
+import { ARTICLE_CATEGORIES, categories, isArticleCategory } from "@/lib/site";
 import { getArticlesByCategory } from "@/lib/content";
 import ArticleCard from "@/components/ArticleCard";
 import AdSlot from "@/components/ads/AdSlot";
 
-const LISTED_CATEGORIES: Exclude<CategorySlug, "guide">[] = [
-  "news",
-  "teorie",
-  "recensioni",
-];
-
-function isArticleCategory(
-  value: string,
-): value is Exclude<CategorySlug, "guide"> {
-  return (LISTED_CATEGORIES as string[]).includes(value);
-}
-
 export function generateStaticParams() {
-  return LISTED_CATEGORIES.map((category) => ({ category }));
+  return ARTICLE_CATEGORIES.map((category) => ({ category }));
 }
 
 export async function generateMetadata({

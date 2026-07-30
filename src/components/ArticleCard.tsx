@@ -4,6 +4,7 @@ import { Clock } from "lucide-react";
 import type { Article } from "@/lib/content";
 import { formatDateShort } from "@/lib/format";
 import CategoryBadge from "@/components/ui/CategoryBadge";
+import UniverseBadge from "@/components/ui/UniverseBadge";
 import CoverPlaceholder from "@/components/ui/CoverPlaceholder";
 
 export default function ArticleCard({
@@ -29,6 +30,7 @@ export default function ArticleCard({
           ) : (
             <CoverPlaceholder
               category={article.category}
+              universe={article.universe}
               title={article.title}
               className="absolute inset-0"
             />
@@ -36,9 +38,10 @@ export default function ArticleCard({
         </div>
       </Link>
       <div className="flex flex-1 flex-col gap-3 p-4">
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          <UniverseBadge universe={article.universe} />
           <CategoryBadge category={article.category} />
-          <span className="flex items-center gap-1 text-xs text-muted">
+          <span className="ml-auto flex items-center gap-1 text-xs text-muted">
             <Clock className="h-3.5 w-3.5" />
             {article.readingTimeText}
           </span>

@@ -4,6 +4,7 @@ import { RefreshCw, Sparkles } from "lucide-react";
 import type { Guide } from "@/lib/content";
 import { formatDateShort } from "@/lib/format";
 import CoverPlaceholder from "@/components/ui/CoverPlaceholder";
+import UniverseBadge from "@/components/ui/UniverseBadge";
 
 export default function GuideCard({ guide }: { guide: Guide }) {
   return (
@@ -18,14 +19,22 @@ export default function GuideCard({ guide }: { guide: Guide }) {
             className="object-cover transition-transform duration-300 group-hover:scale-105"
           />
         ) : (
-          <CoverPlaceholder category="guide" title={guide.title} className="absolute inset-0" />
+          <CoverPlaceholder
+            category="guide"
+            universe={guide.universe}
+            title={guide.title}
+            className="absolute inset-0"
+          />
         )}
       </Link>
       <div className="flex flex-1 flex-col gap-3 p-4">
-        <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-accent-guide/40 bg-accent-guide/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-accent-guide">
-          <Sparkles className="h-3 w-3" />
-          Guida evergreen
-        </span>
+        <div className="flex flex-wrap items-center gap-2">
+          <UniverseBadge universe={guide.universe} />
+          <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-accent-guide/40 bg-accent-guide/10 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-accent-guide">
+            <Sparkles className="h-3 w-3" />
+            Guida evergreen
+          </span>
+        </div>
         <h3 className="font-display text-lg font-semibold leading-snug">
           <Link href={guide.href} className="hover:text-accent-guide">
             {guide.title}

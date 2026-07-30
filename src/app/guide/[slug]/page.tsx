@@ -7,6 +7,7 @@ import { getAllGuides, getGuideBySlug, renderContent } from "@/lib/content";
 import { formatDate } from "@/lib/format";
 import { guideJsonLd } from "@/lib/schema";
 import CoverPlaceholder from "@/components/ui/CoverPlaceholder";
+import UniverseBadge from "@/components/ui/UniverseBadge";
 import TagList from "@/components/ui/TagList";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ShareButtons from "@/components/ShareButtons";
@@ -68,6 +69,10 @@ export default async function GuidePage({
         ]}
       />
 
+      <div className="mb-4 flex flex-wrap items-center gap-3">
+        <UniverseBadge universe={guide.universe} size="md" />
+      </div>
+
       <h1 className="font-display text-3xl font-bold leading-tight sm:text-4xl">
         {guide.title}
       </h1>
@@ -97,6 +102,7 @@ export default async function GuidePage({
         ) : (
           <CoverPlaceholder
             category="guide"
+            universe={guide.universe}
             title={guide.title}
             className="absolute inset-0"
           />

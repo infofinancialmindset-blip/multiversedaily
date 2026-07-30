@@ -11,6 +11,11 @@ publish_mode: simple
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
+# Nota: i campi "Universo" e "Formato" presenti in ogni collection decidono in
+# quali sezioni del sito compare il contenuto (MCU, DC Universe, Film, Serie TV).
+# Sono ripetuti per esteso in ogni collection perché lo YAML non permette di
+# riusare una lista di campi senza annidarla.
+
 collections:
   - name: "news"
     label: "News"
@@ -22,12 +27,68 @@ collections:
       - { label: "Titolo", name: "title", widget: "string" }
       - { label: "Estratto", name: "excerpt", widget: "text" }
       - { label: "Autore", name: "author", widget: "string", default: "Redazione" }
+      - label: "Universo"
+        name: "universe"
+        widget: "select"
+        default: "mcu"
+        hint: "Decide se compare nella sezione MCU o DC Universe"
+        options:
+          - { label: "MCU (Marvel)", value: "mcu" }
+          - { label: "DC Universe", value: "dc" }
+          - { label: "Altri cinecomics", value: "altro" }
+      - label: "Formato"
+        name: "format"
+        widget: "select"
+        default: "film"
+        hint: "Decide se compare nella sezione Film o Serie TV"
+        options:
+          - { label: "Film", value: "film" }
+          - { label: "Serie TV", value: "serie" }
+          - { label: "Nessuno dei due", value: "altro" }
       - { label: "Data pubblicazione", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD" }
       - { label: "Data aggiornamento", name: "updatedAt", widget: "datetime", format: "YYYY-MM-DD", required: false }
       - { label: "Immagine di copertina", name: "coverImage", widget: "image", required: false }
       - { label: "In evidenza in home", name: "featured", widget: "boolean", default: false }
       - { label: "Tag", name: "tags", widget: "list", default: [] }
       - { label: "Contenuto", name: "body", widget: "markdown" }
+
+  - name: "leak"
+    label: "Leak & Rumor"
+    folder: "content/articles/leak"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    fields:
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Estratto", name: "excerpt", widget: "text" }
+      - { label: "Autore", name: "author", widget: "string", default: "Redazione" }
+      - label: "Universo"
+        name: "universe"
+        widget: "select"
+        default: "mcu"
+        hint: "Decide se compare nella sezione MCU o DC Universe"
+        options:
+          - { label: "MCU (Marvel)", value: "mcu" }
+          - { label: "DC Universe", value: "dc" }
+          - { label: "Altri cinecomics", value: "altro" }
+      - label: "Formato"
+        name: "format"
+        widget: "select"
+        default: "film"
+        hint: "Decide se compare nella sezione Film o Serie TV"
+        options:
+          - { label: "Film", value: "film" }
+          - { label: "Serie TV", value: "serie" }
+          - { label: "Nessuno dei due", value: "altro" }
+      - { label: "Data pubblicazione", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD" }
+      - { label: "Data aggiornamento", name: "updatedAt", widget: "datetime", format: "YYYY-MM-DD", required: false }
+      - { label: "Immagine di copertina", name: "coverImage", widget: "image", required: false }
+      - { label: "In evidenza in home", name: "featured", widget: "boolean", default: false }
+      - { label: "Tag", name: "tags", widget: "list", default: [] }
+      - label: "Contenuto"
+        name: "body"
+        widget: "markdown"
+        hint: "Indica sempre il livello di affidabilità del leak all'inizio dell'articolo"
 
   - name: "teorie"
     label: "Teorie & Approfondimenti"
@@ -39,6 +100,24 @@ collections:
       - { label: "Titolo", name: "title", widget: "string" }
       - { label: "Estratto", name: "excerpt", widget: "text" }
       - { label: "Autore", name: "author", widget: "string", default: "Redazione" }
+      - label: "Universo"
+        name: "universe"
+        widget: "select"
+        default: "mcu"
+        hint: "Decide se compare nella sezione MCU o DC Universe"
+        options:
+          - { label: "MCU (Marvel)", value: "mcu" }
+          - { label: "DC Universe", value: "dc" }
+          - { label: "Altri cinecomics", value: "altro" }
+      - label: "Formato"
+        name: "format"
+        widget: "select"
+        default: "film"
+        hint: "Decide se compare nella sezione Film o Serie TV"
+        options:
+          - { label: "Film", value: "film" }
+          - { label: "Serie TV", value: "serie" }
+          - { label: "Nessuno dei due", value: "altro" }
       - { label: "Data pubblicazione", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD" }
       - { label: "Data aggiornamento", name: "updatedAt", widget: "datetime", format: "YYYY-MM-DD", required: false }
       - { label: "Immagine di copertina", name: "coverImage", widget: "image", required: false }
@@ -56,6 +135,24 @@ collections:
       - { label: "Titolo", name: "title", widget: "string" }
       - { label: "Estratto", name: "excerpt", widget: "text" }
       - { label: "Autore", name: "author", widget: "string", default: "Redazione" }
+      - label: "Universo"
+        name: "universe"
+        widget: "select"
+        default: "mcu"
+        hint: "Decide se compare nella sezione MCU o DC Universe"
+        options:
+          - { label: "MCU (Marvel)", value: "mcu" }
+          - { label: "DC Universe", value: "dc" }
+          - { label: "Altri cinecomics", value: "altro" }
+      - label: "Formato"
+        name: "format"
+        widget: "select"
+        default: "film"
+        hint: "Decide se compare nella sezione Film o Serie TV"
+        options:
+          - { label: "Film", value: "film" }
+          - { label: "Serie TV", value: "serie" }
+          - { label: "Nessuno dei due", value: "altro" }
       - { label: "Voto (1-10)", name: "rating", widget: "number", value_type: "float", min: 1, max: 10, required: false }
       - { label: "Data pubblicazione", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD" }
       - { label: "Data aggiornamento", name: "updatedAt", widget: "datetime", format: "YYYY-MM-DD", required: false }
@@ -82,6 +179,24 @@ collections:
       - { label: "Titolo", name: "title", widget: "string" }
       - { label: "Estratto", name: "excerpt", widget: "text" }
       - { label: "Autore", name: "author", widget: "string", default: "Redazione" }
+      - label: "Universo"
+        name: "universe"
+        widget: "select"
+        default: "mcu"
+        hint: "Decide se compare nella sezione MCU o DC Universe"
+        options:
+          - { label: "MCU (Marvel)", value: "mcu" }
+          - { label: "DC Universe", value: "dc" }
+          - { label: "Altri cinecomics", value: "altro" }
+      - label: "Formato"
+        name: "format"
+        widget: "select"
+        default: "altro"
+        hint: "Decide se compare nella sezione Film o Serie TV"
+        options:
+          - { label: "Film", value: "film" }
+          - { label: "Serie TV", value: "serie" }
+          - { label: "Nessuno dei due", value: "altro" }
       - { label: "Data prima pubblicazione", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD" }
       - { label: "Data ultimo aggiornamento", name: "updatedAt", widget: "datetime", format: "YYYY-MM-DD", hint: "Aggiorna questa data ogni volta che modifichi la guida" }
       - { label: "Immagine di copertina", name: "coverImage", widget: "image", required: false }

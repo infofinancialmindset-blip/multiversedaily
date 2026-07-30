@@ -2,6 +2,8 @@
 title: "Recensione Daredevil: Born Again (stagione 1): il ritorno più maturo dell'MCU"
 excerpt: "La serie recupera il tono cupo e adulto della produzione originale, con una scrittura seriale che finalmente prende il proprio tempo."
 tags: ["Daredevil", "Recensioni MCU"]
+universe: "mcu"
+format: "serie"
 publishedAt: "2025-11-30"
 author: "Davide Conti"
 rating: 8.9

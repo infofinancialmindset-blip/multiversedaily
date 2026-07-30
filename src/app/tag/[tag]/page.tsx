@@ -5,8 +5,7 @@ import {
   getAllTagSlugs,
   getContentByTag,
 } from "@/lib/content";
-import ArticleCard from "@/components/ArticleCard";
-import GuideCard from "@/components/GuideCard";
+import ContentGrid from "@/components/ContentGrid";
 
 export function generateStaticParams() {
   return getAllTagSlugs().map((tag) => ({ tag }));
@@ -53,17 +52,7 @@ export default async function TagPage({
         </p>
       </header>
 
-      <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {items.map((item) =>
-          item.kind === "guide" ? (
-            <div key={item.href} className="sm:col-span-2 lg:col-span-3">
-              <GuideCard guide={item} />
-            </div>
-          ) : (
-            <ArticleCard key={item.href} article={item} />
-          ),
-        )}
-      </div>
+      <ContentGrid items={items} />
     </div>
   );
 }

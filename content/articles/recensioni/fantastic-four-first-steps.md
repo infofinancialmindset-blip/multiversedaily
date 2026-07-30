@@ -2,6 +2,8 @@
 title: "Recensione The Fantastic Four: First Steps – la famiglia Marvel più attesa non delude"
 excerpt: "Un debutto retrò-futuristico che riesce a rendere fresca una delle formazioni più storiche del fumetto Marvel, con un cast in stato di grazia."
 tags: ["Fantastic Four", "Recensioni MCU"]
+universe: "mcu"
+format: "film"
 publishedAt: "2026-02-14"
 author: "Elena Marchetti"
 rating: 8.4
