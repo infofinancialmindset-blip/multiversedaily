@@ -3,7 +3,12 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { Clock, RefreshCw } from "lucide-react";
 import { categories } from "@/lib/site";
-import { getAllGuides, getGuideBySlug, renderContent } from "@/lib/content";
+import {
+  coverPositionClass,
+  getAllGuides,
+  getGuideBySlug,
+  renderContent,
+} from "@/lib/content";
 import { formatDate } from "@/lib/format";
 import { guideJsonLd } from "@/lib/schema";
 import CoverPlaceholder from "@/components/ui/CoverPlaceholder";
@@ -97,7 +102,7 @@ export default async function GuidePage({
             fill
             priority
             sizes="(min-width: 768px) 768px, 100vw"
-            className="object-cover"
+            className={`object-cover ${coverPositionClass(guide.coverPosition)}`}
           />
         ) : (
           <CoverPlaceholder

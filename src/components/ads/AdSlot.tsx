@@ -14,9 +14,19 @@ const SLOT_LABELS: Record<AdSlotId, string> = {
 };
 
 /**
- * Slot pubblicitario predisposto ma vuoto: sostituire il contenuto con lo
- * script AdSense/Ezoic quando l'account sarà approvato. Vedi README.
+ * Gli spazi pubblicitari restano nel codice, nei punti giusti, ma non
+ * vengono mostrati ai visitatori finché non attivi davvero AdSense/Ezoic:
+ * un riquadro tratteggiato vuoto peggiora l'aspetto del sito e non porta
+ * alcun guadagno.
+ *
+ * Per riattivarli imposta la variabile d'ambiente:
+ *   NEXT_PUBLIC_ADS_ENABLED=true
+ * (in locale nel file .env.local, in produzione fra le Environment
+ * Variables di Vercel), poi sostituisci il segnaposto qui sotto con lo
+ * script fornito dalla piattaforma pubblicitaria.
  */
+const ADS_ENABLED = process.env.NEXT_PUBLIC_ADS_ENABLED === "true";
+
 export default function AdSlot({
   id,
   className = "",
@@ -24,6 +34,8 @@ export default function AdSlot({
   id: AdSlotId;
   className?: string;
 }) {
+  if (!ADS_ENABLED) return null;
+
   return (
     <div
       data-ad-slot={id}

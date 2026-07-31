@@ -22,6 +22,22 @@ export type WhereToWatchEntry = {
   note?: string;
 };
 
+export type CoverPosition = "top" | "center" | "bottom";
+
+/**
+ * Classi Tailwind statiche: vanno scritte per esteso, altrimenti non
+ * finiscono nel CSS generato.
+ */
+const COVER_POSITION_CLASS: Record<CoverPosition, string> = {
+  top: "object-top",
+  center: "object-center",
+  bottom: "object-bottom",
+};
+
+export function coverPositionClass(position?: CoverPosition): string {
+  return COVER_POSITION_CLASS[position ?? "center"];
+}
+
 type FrontmatterBase = {
   title: string;
   excerpt: string;
@@ -30,7 +46,17 @@ type FrontmatterBase = {
   updatedAt?: string;
   author: string;
   coverImage?: string;
+  /**
+   * Quale parte della copertina resta visibile nel ritaglio 16:9. Utile per
+   * le foto verticali, dove il centro taglierebbe via i volti.
+   */
+  coverPosition?: CoverPosition;
   featured?: boolean;
+  /**
+   * Posizione in prima pagina: 1 = primo articolo in evidenza. Se vuoto,
+   * l'articolo si ordina per data dopo quelli numerati.
+   */
+  featuredOrder?: number;
   /** Universo narrativo: alimenta le sezioni /mcu e /dc-universe. */
   universe?: Universe;
   /** Formato: alimenta le sezioni /film e /serie-tv. */
@@ -189,9 +215,21 @@ export function getContentBySection(section: SectionSlug): ContentItem[] {
   });
 }
 
+/**
+ * Ordina gli articoli in evidenza secondo `featuredOrder` (1 = primo).
+ * Quelli senza numero vengono dopo, dal più recente.
+ */
+function sortByFeaturedOrder(items: Article[]): Article[] {
+  const numbered = items
+    .filter((a) => typeof a.featuredOrder === "number")
+    .sort((a, b) => a.featuredOrder! - b.featuredOrder!);
+  const rest = items.filter((a) => typeof a.featuredOrder !== "number");
+  return [...numbered, ...rest];
+}
+
 export function getFeaturedArticles(limit = 4): Article[] {
   const featured = getAllArticles().filter((article) => article.featured);
-  const pool = featured.length > 0 ? featured : getAllArticles();
+  const pool = featured.length > 0 ? sortByFeaturedOrder(featured) : getAllArticles();
   return pool.slice(0, limit);
 }
 

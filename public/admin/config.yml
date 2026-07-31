@@ -58,7 +58,24 @@ collections:
       - { label: "Data pubblicazione", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD" }
       - { label: "Data aggiornamento", name: "updatedAt", widget: "datetime", format: "YYYY-MM-DD", required: false }
       - { label: "Immagine di copertina", name: "coverImage", widget: "image", required: false }
+      - label: "Inquadratura copertina"
+        name: "coverPosition"
+        widget: "select"
+        default: "center"
+        required: false
+        hint: "Quale parte della foto resta visibile nel ritaglio. Usa Alto se l'immagine contiene volti in cima."
+        options:
+          - { label: "Centro (predefinito)", value: "center" }
+          - { label: "Alto", value: "top" }
+          - { label: "Basso", value: "bottom" }
       - { label: "In evidenza in home", name: "featured", widget: "boolean", default: false }
+      - label: "Posizione in home"
+        name: "featuredOrder"
+        widget: "number"
+        value_type: "int"
+        min: 1
+        required: false
+        hint: "Solo se \"In evidenza\" è attivo. 1 = articolo grande in cima, 2, 3, 4 = riquadri laterali. Lascia vuoto per ordinare per data."
       - { label: "Tag", name: "tags", widget: "list", default: [] }
       - { label: "Contenuto", name: "body", widget: "markdown" }
 
@@ -93,7 +110,24 @@ collections:
       - { label: "Data pubblicazione", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD" }
       - { label: "Data aggiornamento", name: "updatedAt", widget: "datetime", format: "YYYY-MM-DD", required: false }
       - { label: "Immagine di copertina", name: "coverImage", widget: "image", required: false }
+      - label: "Inquadratura copertina"
+        name: "coverPosition"
+        widget: "select"
+        default: "center"
+        required: false
+        hint: "Quale parte della foto resta visibile nel ritaglio. Usa Alto se l'immagine contiene volti in cima."
+        options:
+          - { label: "Centro (predefinito)", value: "center" }
+          - { label: "Alto", value: "top" }
+          - { label: "Basso", value: "bottom" }
       - { label: "In evidenza in home", name: "featured", widget: "boolean", default: false }
+      - label: "Posizione in home"
+        name: "featuredOrder"
+        widget: "number"
+        value_type: "int"
+        min: 1
+        required: false
+        hint: "Solo se \"In evidenza\" è attivo. 1 = articolo grande in cima, 2, 3, 4 = riquadri laterali. Lascia vuoto per ordinare per data."
       - { label: "Tag", name: "tags", widget: "list", default: [] }
       - label: "Contenuto"
         name: "body"
@@ -131,7 +165,24 @@ collections:
       - { label: "Data pubblicazione", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD" }
       - { label: "Data aggiornamento", name: "updatedAt", widget: "datetime", format: "YYYY-MM-DD", required: false }
       - { label: "Immagine di copertina", name: "coverImage", widget: "image", required: false }
+      - label: "Inquadratura copertina"
+        name: "coverPosition"
+        widget: "select"
+        default: "center"
+        required: false
+        hint: "Quale parte della foto resta visibile nel ritaglio. Usa Alto se l'immagine contiene volti in cima."
+        options:
+          - { label: "Centro (predefinito)", value: "center" }
+          - { label: "Alto", value: "top" }
+          - { label: "Basso", value: "bottom" }
       - { label: "In evidenza in home", name: "featured", widget: "boolean", default: false }
+      - label: "Posizione in home"
+        name: "featuredOrder"
+        widget: "number"
+        value_type: "int"
+        min: 1
+        required: false
+        hint: "Solo se \"In evidenza\" è attivo. 1 = articolo grande in cima, 2, 3, 4 = riquadri laterali. Lascia vuoto per ordinare per data."
       - { label: "Tag", name: "tags", widget: "list", default: [] }
       - { label: "Contenuto", name: "body", widget: "markdown" }
 
@@ -167,7 +218,24 @@ collections:
       - { label: "Data pubblicazione", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD" }
       - { label: "Data aggiornamento", name: "updatedAt", widget: "datetime", format: "YYYY-MM-DD", required: false }
       - { label: "Immagine di copertina", name: "coverImage", widget: "image", required: false }
+      - label: "Inquadratura copertina"
+        name: "coverPosition"
+        widget: "select"
+        default: "center"
+        required: false
+        hint: "Quale parte della foto resta visibile nel ritaglio. Usa Alto se l'immagine contiene volti in cima."
+        options:
+          - { label: "Centro (predefinito)", value: "center" }
+          - { label: "Alto", value: "top" }
+          - { label: "Basso", value: "bottom" }
       - { label: "In evidenza in home", name: "featured", widget: "boolean", default: false }
+      - label: "Posizione in home"
+        name: "featuredOrder"
+        widget: "number"
+        value_type: "int"
+        min: 1
+        required: false
+        hint: "Solo se \"In evidenza\" è attivo. 1 = articolo grande in cima, 2, 3, 4 = riquadri laterali. Lascia vuoto per ordinare per data."
       - { label: "Tag", name: "tags", widget: "list", default: [] }
       - label: "Dove guardarlo (link affiliati)"
         name: "whereToWatch"
@@ -210,7 +278,24 @@ collections:
       - { label: "Data prima pubblicazione", name: "publishedAt", widget: "datetime", format: "YYYY-MM-DD" }
       - { label: "Data ultimo aggiornamento", name: "updatedAt", widget: "datetime", format: "YYYY-MM-DD", hint: "Aggiorna questa data ogni volta che modifichi la guida" }
       - { label: "Immagine di copertina", name: "coverImage", widget: "image", required: false }
+      - label: "Inquadratura copertina"
+        name: "coverPosition"
+        widget: "select"
+        default: "center"
+        required: false
+        hint: "Quale parte della foto resta visibile nel ritaglio. Usa Alto se l'immagine contiene volti in cima."
+        options:
+          - { label: "Centro (predefinito)", value: "center" }
+          - { label: "Alto", value: "top" }
+          - { label: "Basso", value: "bottom" }
       - { label: "In evidenza in home", name: "featured", widget: "boolean", default: false }
+      - label: "Posizione in home"
+        name: "featuredOrder"
+        widget: "number"
+        value_type: "int"
+        min: 1
+        required: false
+        hint: "Solo se \"In evidenza\" è attivo. 1 = articolo grande in cima, 2, 3, 4 = riquadri laterali. Lascia vuoto per ordinare per data."
       - { label: "Tag", name: "tags", widget: "list", default: [] }
       - label: "Dove guardarlo (link affiliati)"
         name: "whereToWatch"

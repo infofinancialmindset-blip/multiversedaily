@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Clock, Calendar } from "lucide-react";
 import { ARTICLE_CATEGORIES, categories, isArticleCategory } from "@/lib/site";
 import {
+  coverPositionClass,
   getArticleBySlug,
   getArticlesByCategory,
   getRelatedArticles,
@@ -126,7 +127,7 @@ export default async function ArticlePage({
             fill
             priority
             sizes="(min-width: 768px) 768px, 100vw"
-            className="object-cover"
+            className={`object-cover ${coverPositionClass(article.coverPosition)}`}
           />
         ) : (
           <CoverPlaceholder

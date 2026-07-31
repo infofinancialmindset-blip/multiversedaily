@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Clock } from "lucide-react";
 import {
+  coverPositionClass,
   getAllArticles,
   getArticlesByCategory,
   getFeaturedArticles,
@@ -36,7 +37,7 @@ export default function HomePage() {
                 fill
                 priority
                 sizes="(min-width: 1024px) 60vw, 100vw"
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className={`object-cover ${coverPositionClass(hero.coverPosition)} transition-transform duration-300 group-hover:scale-105`}
               />
             ) : (
               <CoverPlaceholder
@@ -81,7 +82,7 @@ export default function HomePage() {
                       alt={article.title}
                       fill
                       sizes="112px"
-                      className="object-cover"
+                      className={`object-cover ${coverPositionClass(article.coverPosition)}`}
                     />
                   ) : (
                     <CoverPlaceholder

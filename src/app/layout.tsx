@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { siteConfig } from "@/lib/site";
@@ -59,6 +61,11 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        {/* Statistiche di traffico e Core Web Vitals: i dati si leggono nella
+            dashboard Vercel del progetto, schede Analytics e Speed Insights.
+            Non usano cookie, quindi non richiedono banner di consenso. */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

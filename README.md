@@ -170,16 +170,34 @@ public/
 ## 5. Monetizzazione (già predisposta, non attiva)
 
 - **Pubblicità**: i punti di inserimento annunci (dopo il primo paragrafo,
-  a metà articolo, fondo pagina, feed home) sono già presenti nel markup
-  come placeholder vuoti (`src/components/ads/AdSlot.tsx`). Per attivare
-  AdSense o Ezoic, sostituisci il contenuto di quel componente con lo script
-  fornito dalla piattaforma pubblicitaria una volta approvato l'account.
+  a metà articolo, fondo pagina, feed home) sono già nel codice ma **non
+  vengono mostrati ai visitatori**: `AdSlot` non renderizza nulla finché non
+  imposti la variabile d'ambiente `NEXT_PUBLIC_ADS_ENABLED=true`. Quando
+  AdSense o Ezoic ti approvano, imposta quella variabile e sostituisci il
+  segnaposto in `src/components/ads/AdSlot.tsx` con il loro script.
 - **Affiliazione**: il box "Dove guardarlo" (`WhereToWatchBox`) accetta link
   affiliati per piattaforme streaming o e-commerce tramite il campo
   frontmatter `whereToWatch` di ogni articolo/guida.
 - **Newsletter**: il form in footer (`NewsletterForm`) è solo frontend;
   collega un provider (Mailchimp, Beehiiv, ConvertKit...) sostituendo la
   funzione `handleSubmit`.
+
+## 5b. Statistiche e performance
+
+Il sito invia i dati a **Vercel Analytics** (visite, pagine più lette,
+provenienza) e **Speed Insights** (Core Web Vitals reali degli utenti).
+Nessuno dei due usa cookie, quindi non richiedono il banner di consenso.
+
+Dove si leggono:
+
+| Cosa | Dove |
+|---|---|
+| Visite, pagine più lette, provenienza | Vercel → progetto → scheda **Analytics** |
+| Velocità e Core Web Vitals | Vercel → progetto → scheda **Speed Insights** |
+| Posizionamento su Google, query di ricerca | [Search Console](https://search.google.com/search-console) (da registrare) |
+
+> Il piano gratuito di Vercel Analytics ha un limite mensile di eventi:
+> abbondante per un sito che parte, da rivedere quando il traffico cresce.
 
 ## 6. Deploy
 

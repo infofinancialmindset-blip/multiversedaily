@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { RefreshCw, Sparkles } from "lucide-react";
-import type { Guide } from "@/lib/content";
+import { coverPositionClass, type Guide } from "@/lib/content";
 import { formatDateShort } from "@/lib/format";
 import CoverPlaceholder from "@/components/ui/CoverPlaceholder";
 import UniverseBadge from "@/components/ui/UniverseBadge";
@@ -16,7 +16,7 @@ export default function GuideCard({ guide }: { guide: Guide }) {
             alt={guide.title}
             fill
             sizes="(min-width: 640px) 192px, 100vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className={`object-cover ${coverPositionClass(guide.coverPosition)} transition-transform duration-300 group-hover:scale-105`}
           />
         ) : (
           <CoverPlaceholder

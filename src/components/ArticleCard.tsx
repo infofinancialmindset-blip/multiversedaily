@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Clock } from "lucide-react";
-import type { Article } from "@/lib/content";
+import { coverPositionClass, type Article } from "@/lib/content";
 import { formatDateShort } from "@/lib/format";
 import CategoryBadge from "@/components/ui/CategoryBadge";
 import UniverseBadge from "@/components/ui/UniverseBadge";
@@ -25,7 +25,7 @@ export default function ArticleCard({
               fill
               priority={priority}
               sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              className={`object-cover ${coverPositionClass(article.coverPosition)} transition-transform duration-300 group-hover:scale-105`}
             />
           ) : (
             <CoverPlaceholder
