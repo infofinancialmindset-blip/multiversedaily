@@ -5,11 +5,11 @@ excerpt: "Alcune immagini non ufficiali circolate sui social mostrerebbero una
   variante dell'armatura mai vista nei materiali promozionali. Affidabilità:
   media."
 author: Marco Ferretti
-reliability: "media"
+reliability: media
 universe: mcu
 format: film
 publishedAt: 2026-07-26
-coverImage: /images/uploads/hocjgq3xeaaacs9.jpeg
+coverImage: /images/uploads/hoveoupwoaa1icy.jpeg
 featured: true
 tags:
   - "Avengers: Doomsday"
