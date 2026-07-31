@@ -6,6 +6,7 @@ universe: "mcu"
 format: "film"
 publishedAt: "2026-07-08"
 author: "Giulia Santoro"
+reliability: "bassa"
 ---
 
 Su diversi forum dedicati all'MCU sta circolando un documento che elencherebbe i personaggi coinvolti in *Avengers: Secret Wars*, il capitolo che chiuderà il Multiverse Saga.

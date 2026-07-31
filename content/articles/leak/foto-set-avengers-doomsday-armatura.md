@@ -5,6 +5,7 @@ excerpt: "Alcune immagini non ufficiali circolate sui social mostrerebbero una
   variante dell'armatura mai vista nei materiali promozionali. Affidabilità:
   media."
 author: Marco Ferretti
+reliability: "media"
 universe: mcu
 format: film
 publishedAt: 2026-07-26

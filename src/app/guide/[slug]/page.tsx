@@ -17,6 +17,7 @@ import TagList from "@/components/ui/TagList";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ShareButtons from "@/components/ShareButtons";
 import ArticleBody from "@/components/ArticleBody";
+import ReadingProgress from "@/components/ReadingProgress";
 import WhereToWatchBox from "@/components/WhereToWatchBox";
 import GuideCard from "@/components/GuideCard";
 import JsonLd from "@/components/JsonLd";
@@ -66,6 +67,7 @@ export default async function GuidePage({
   return (
     <article className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
       <JsonLd data={guideJsonLd(guide)} />
+      <ReadingProgress />
 
       <Breadcrumbs
         items={[

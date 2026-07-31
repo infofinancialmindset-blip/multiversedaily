@@ -168,6 +168,7 @@ export const secondaryNavLinks = [
 
 /** Sezioni tematiche non in navbar, raggiungibili dal footer. */
 export const footerExtraLinks = [
+  { href: "/calendario", label: "Calendario uscite" },
   { href: "/teorie", label: "Teorie & Approfondimenti" },
   { href: "/guide", label: "Guide" },
 ] as const;

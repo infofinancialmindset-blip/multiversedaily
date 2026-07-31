@@ -24,6 +24,9 @@ export type WhereToWatchEntry = {
 
 export type CoverPosition = "top" | "center" | "bottom";
 
+/** Quanto è attendibile un leak. Usato solo dalla categoria "leak". */
+export type Reliability = "alta" | "media" | "bassa";
+
 /**
  * Classi Tailwind statiche: vanno scritte per esteso, altrimenti non
  * finiscono nel CSS generato.
@@ -66,6 +69,8 @@ type FrontmatterBase = {
 
 type ArticleFrontmatter = FrontmatterBase & {
   rating?: number;
+  /** Solo per i leak: quanto è attendibile l'indiscrezione. */
+  reliability?: Reliability;
 };
 
 type GuideFrontmatter = FrontmatterBase;

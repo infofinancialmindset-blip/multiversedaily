@@ -8,6 +8,8 @@ import {
   getFeaturedArticles,
   getFeaturedGuides,
 } from "@/lib/content";
+import { getUpcomingReleases } from "@/lib/releases";
+import ReleaseCountdown from "@/components/ReleaseCountdown";
 import ArticleCard from "@/components/ArticleCard";
 import GuideCard from "@/components/GuideCard";
 import CategoryBadge from "@/components/ui/CategoryBadge";
@@ -20,6 +22,7 @@ export default function HomePage() {
   const latestNews = getArticlesByCategory("news").slice(0, 4);
   const guides = getFeaturedGuides(3);
   const latest = getAllArticles().slice(0, 6);
+  const [nextRelease] = getUpcomingReleases(1);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
@@ -110,6 +113,13 @@ export default function HomePage() {
             ))}
           </div>
         </section>
+      )}
+
+      {/* Conto alla rovescia verso la prossima uscita */}
+      {nextRelease && (
+        <div className="mt-8">
+          <ReleaseCountdown release={nextRelease} />
+        </div>
       )}
 
       {/* Guide evergreen in rilievo */}

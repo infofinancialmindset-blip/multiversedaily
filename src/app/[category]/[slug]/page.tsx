@@ -15,11 +15,13 @@ import { articleJsonLd } from "@/lib/schema";
 import CategoryBadge from "@/components/ui/CategoryBadge";
 import UniverseBadge from "@/components/ui/UniverseBadge";
 import RatingBadge from "@/components/ui/RatingBadge";
+import ReliabilityMeter from "@/components/ui/ReliabilityMeter";
 import CoverPlaceholder from "@/components/ui/CoverPlaceholder";
 import TagList from "@/components/ui/TagList";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ShareButtons from "@/components/ShareButtons";
 import ArticleBody from "@/components/ArticleBody";
+import ReadingProgress from "@/components/ReadingProgress";
 import RelatedArticles from "@/components/RelatedArticles";
 import WhereToWatchBox from "@/components/WhereToWatchBox";
 import JsonLd from "@/components/JsonLd";
@@ -86,6 +88,7 @@ export default async function ArticlePage({
   return (
     <article className="mx-auto max-w-3xl px-4 py-10 sm:px-6">
       <JsonLd data={articleJsonLd(article)} />
+      <ReadingProgress />
 
       <Breadcrumbs
         items={[
@@ -138,6 +141,10 @@ export default async function ArticlePage({
           />
         )}
       </div>
+
+      {category === "leak" && (
+        <ReliabilityMeter reliability={article.reliability} />
+      )}
 
       <div className="mt-8">
         <ArticleBody html={html} />

@@ -6,6 +6,7 @@ universe: "dc"
 format: "serie"
 publishedAt: "2026-06-17"
 author: "Davide Conti"
+reliability: "media"
 ---
 
 Alcune segnalazioni provenienti da ambienti legati alle agenzie di casting indicherebbero l'avvio delle selezioni per una **serie DC Universe non ancora annunciata pubblicamente**.

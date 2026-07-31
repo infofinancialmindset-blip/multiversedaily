@@ -6,6 +6,8 @@ import { formatDateShort } from "@/lib/format";
 import CategoryBadge from "@/components/ui/CategoryBadge";
 import UniverseBadge from "@/components/ui/UniverseBadge";
 import CoverPlaceholder from "@/components/ui/CoverPlaceholder";
+import ReliabilityMeter from "@/components/ui/ReliabilityMeter";
+import TiltCard from "@/components/ui/TiltCard";
 
 export default function ArticleCard({
   article,
@@ -15,7 +17,8 @@ export default function ArticleCard({
   priority?: boolean;
 }) {
   return (
-    <article className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-colors hover:border-accent-primary/60">
+    <TiltCard>
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface transition-colors hover:border-accent-primary/60">
       <Link href={article.href} className="block">
         <div className="relative aspect-[16/9] w-full">
           {article.coverImage ? (
@@ -52,11 +55,15 @@ export default function ArticleCard({
           </Link>
         </h3>
         <p className="line-clamp-2 text-sm text-muted">{article.excerpt}</p>
+        {article.category === "leak" && (
+          <ReliabilityMeter reliability={article.reliability} compact />
+        )}
         <div className="mt-auto flex items-center justify-between pt-2 text-xs text-muted">
           <span>{formatDateShort(article.publishedAt)}</span>
           <span>{article.author}</span>
         </div>
       </div>
     </article>
+    </TiltCard>
   );
 }

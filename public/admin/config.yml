@@ -89,6 +89,16 @@ collections:
       - { label: "Titolo", name: "title", widget: "string" }
       - { label: "Estratto", name: "excerpt", widget: "text" }
       - { label: "Autore", name: "author", widget: "string", default: "Redazione" }
+      - label: "Affidabilità"
+        name: "reliability"
+        widget: "select"
+        default: "media"
+        required: false
+        hint: "Mostrato ai lettori come indicatore grafico. Dichiararlo distingue il sito da chi rilancia ogni voce come confermata."
+        options:
+          - { label: "Alta — fonte storicamente accurata o più riscontri", value: "alta" }
+          - { label: "Media — plausibile ma non verificabile", value: "media" }
+          - { label: "Bassa — voce non verificata, probabilmente infondata", value: "bassa" }
       - label: "Universo"
         name: "universe"
         widget: "select"
@@ -306,3 +316,34 @@ collections:
           - { label: "Link", name: "url", widget: "string" }
           - { label: "Nota", name: "note", widget: "string", required: false }
       - { label: "Contenuto", name: "body", widget: "markdown" }
+
+  - name: "uscite"
+    label: "Calendario uscite"
+    folder: "content/uscite"
+    create: true
+    slug: "{{slug}}"
+    format: "frontmatter"
+    summary: "{{title}} — {{releaseDate}}"
+    sortable_fields: ["releaseDate", "title"]
+    fields:
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Data di uscita", name: "releaseDate", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - label: "Universo"
+        name: "universe"
+        widget: "select"
+        default: "mcu"
+        options:
+          - { label: "MCU (Marvel)", value: "mcu" }
+          - { label: "DC Universe", value: "dc" }
+          - { label: "Altri cinecomics", value: "altro" }
+      - label: "Formato"
+        name: "format"
+        widget: "select"
+        default: "film"
+        options:
+          - { label: "Film", value: "film" }
+          - { label: "Serie TV", value: "serie" }
+          - { label: "Nessuno dei due", value: "altro" }
+      - { label: "Nota", name: "note", widget: "string", required: false, hint: "Es. \"Al cinema\", \"Su Disney+\", \"Data non confermata\"" }
+      - { label: "Descrizione", name: "description", widget: "text", required: false }
+      - { label: "Link a un articolo", name: "link", widget: "string", required: false, hint: "Es. /news/nome-articolo" }
